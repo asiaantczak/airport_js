@@ -13,4 +13,9 @@ describe("Plane", function() {
     plane.land();
     expect(plane.status).toEqual('landed');
   });
+
+  it("has a flying status after take off", function() {
+    plane.fly();
+    expect(plane.status).toEqual('flying');
+  });
 });
