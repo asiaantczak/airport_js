@@ -13,4 +13,16 @@ describe("Airport", function() {
     expect(airport.capacity).toEqual(10);
   });
 
+  describe("land", function() {
+    var plane;
+
+    beforeEach(function() {
+      plane = new Plane();
+    });
+
+    it('should add a plane to the airport', function() {
+      airport.land(plane);
+      expect(airport.planes).toEqual([plane]);
+    });
+  });
 });
