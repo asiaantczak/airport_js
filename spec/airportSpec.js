@@ -1,11 +1,12 @@
 describe("Airport", function() {
   var airport;
   var plane;
+  var plane2;
 
   beforeEach(function() {
     airport = new Airport();
-    plane = new Plane();
-    plane2 = new Plane();
+    plane = jasmine.createSpyObj('plane', ['land', 'fly']);
+    plane2 = jasmine.createSpyObj('plane2', ['land', 'fly']);
   });
 
   it("should return an empty array", function() {
@@ -24,8 +25,8 @@ describe("Airport", function() {
     });
 
     it('has got a landed plane', function() {
-      airport.landPlane(plane)
-      expect(plane.status).toEqual('landed')
+      airport.landPlane(plane);
+      expect(plane.land).toHaveBeenCalled();
     });
   });
 
@@ -40,7 +41,7 @@ describe("Airport", function() {
     it('plane is flying after taking off', function() {
       airport.landPlane(plane);
       airport.takeOff(plane);
-      expect(plane.status).toEqual('flying')
+      expect(plane.fly).toHaveBeenCalled();
     });
   });
 });
