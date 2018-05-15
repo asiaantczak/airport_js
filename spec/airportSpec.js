@@ -36,5 +36,11 @@ describe("Airport", function() {
       airport.takeOff(plane);
       expect(airport.planes).toEqual([plane2]);
     });
+
+    it('plane is flying after taking off', function() {
+      airport.landPlane(plane);
+      airport.takeOff(plane);
+      expect(plane.status).toEqual('flying')
+    });
   });
 });
