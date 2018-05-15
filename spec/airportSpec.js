@@ -28,6 +28,13 @@ describe("Airport", function() {
       airport.landPlane(plane);
       expect(plane.land).toHaveBeenCalled();
     });
+
+    it('cannot land a plane if airport is full', function() {
+      for (var i = 0; i < 10; i ++) {
+        airport.landPlane(plane);
+      };
+      expect(function () { airport.landPlane(plane)}).toThrow('Airport is full!');
+    });
   });
 
   describe("takeOff", function() {
