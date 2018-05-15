@@ -24,5 +24,11 @@ describe("Airport", function() {
       airport.landPlane(plane);
       expect(airport.planes).toEqual([plane]);
     });
+
+    it('has got landed plane', function() {
+      airport.landPlane(plane)
+      expect(plane.status).toEqual('landed')
+    });
+
   });
 });
