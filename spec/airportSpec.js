@@ -21,7 +21,7 @@ describe("Airport", function() {
     });
 
     it('should add a plane to the airport', function() {
-      airport.land(plane);
+      airport.landPlane(plane);
       expect(airport.planes).toEqual([plane]);
     });
   });

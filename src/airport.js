@@ -5,6 +5,6 @@ function Airport(capacity = defaultCapacity) {
   this.capacity = capacity
 };
 
-Airport.prototype.land = function(plane) {
+Airport.prototype.landPlane = function(plane) {
   this.planes.push(plane);
 };

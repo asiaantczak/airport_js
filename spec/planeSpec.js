@@ -1,4 +1,4 @@
-describe("Plane", function() { 
+describe("Plane", function() {
   var plane;
 
   beforeEach(function() {
@@ -7,5 +7,10 @@ describe("Plane", function() {
 
   it("has a flying status", function() {
     expect(plane.status).toEqual('flying');
+  });
+
+  it("has a landed status after landing", function() {
+    plane.land();
+    expect(plane.status).toEqual('landed');
   });
 });
