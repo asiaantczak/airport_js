@@ -33,7 +33,7 @@ describe("Airport", function() {
       for (var i = 0; i < 10; i ++) {
         airport.landPlane(plane);
       };
-      expect(function () { airport.landPlane(plane)}).toThrow('Airport is full!');
+      expect(function () { airport.landPlane(plane) }).toThrow('Airport is full!');
     });
   });
 
