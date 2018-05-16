@@ -50,5 +50,10 @@ describe("Airport", function() {
       airport.takeOff(plane);
       expect(plane.fly).toHaveBeenCalled();
     });
+
+    it('raises error if airport is empty', function () {
+      airport.planes.length = 0
+      expect(function() { airport.takeOff(plane) }).toThrow('There are not planes at the airport')
+    });
   });
 });
