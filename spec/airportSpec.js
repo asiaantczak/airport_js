@@ -7,6 +7,7 @@ describe("Airport", function() {
     airport = new Airport();
     plane = jasmine.createSpyObj('plane', ['land', 'fly']);
     plane2 = jasmine.createSpyObj('plane2', ['land', 'fly']);
+    weather = jasmine.createSpyObj('weather', ['generate'])
   });
 
   it("should return an empty array", function() {
@@ -54,6 +55,13 @@ describe("Airport", function() {
     it('raises error if airport is empty', function () {
       airport.planes.length = 0
       expect(function() { airport.takeOff(plane) }).toThrow('There are not planes at the airport')
+    });
+  });
+
+  describe("checkWeather", function() {
+    it('should check the weather', function() {
+      airport.checkWeather();
+      expect(weather.generate).toHaveBeenCalled();
     });
   });
 });

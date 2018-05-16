@@ -1,6 +1,6 @@
 const outlook = ["stormy", "sunny", "sunny", "sunny", "sunny"]
 function Weather() {
-  this.status = "undefined"
+  this.status = null
 };
 
 Weather.prototype.generate = function(){

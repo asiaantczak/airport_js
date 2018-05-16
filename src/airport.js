@@ -3,6 +3,7 @@ const defaultCapacity = 10;
 function Airport(capacity = defaultCapacity) {
   this.planes = []
   this.capacity = capacity
+  this.weather = null
 };
 
 Airport.prototype.landPlane = function(plane) {
@@ -22,4 +23,8 @@ Airport.prototype.takeOff = function(plane) {
     this.planes.splice(index, 1);
     plane.fly();
   }
+};
+
+Airport.prototype.checkWeather = function() {
+  this.weather = weather.generate();
 };
