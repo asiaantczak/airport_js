@@ -1,11 +1,15 @@
+const LANDED = 'landed';
+const FLYING = 'flying';
+
 function Plane() {
-  this.status = 'flying';
+  this.status = FLYING;
 };
 
 Plane.prototype.land = function() {
-  this.status = 'landed';
+
+  this.status = LANDED;
 };
 
 Plane.prototype.fly = function() {
-  this.status = 'flying';
+  this.status = FLYING;
 };
