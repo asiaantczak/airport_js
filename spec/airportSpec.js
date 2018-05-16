@@ -2,12 +2,15 @@ describe("Airport", function() {
   var airport;
   var plane;
   var plane2;
+  var weather;
+
+  debugger;
 
   beforeEach(function() {
     airport = new Airport();
     plane = jasmine.createSpyObj('plane', ['land', 'fly']);
     plane2 = jasmine.createSpyObj('plane2', ['land', 'fly']);
-    weather = jasmine.createSpyObj('weather', ['generate'])
+
   });
 
   it("should return an empty array", function() {
@@ -19,6 +22,12 @@ describe("Airport", function() {
   });
 
   describe("landPlane", function() {
+    beforeEach(function() {
+    var weather2 = {
+      generate: function() {}
+    }
+  });
+    spyOn(weather2,'generate').and.returnValue('stormy');
 
     it('should add a plane to the airport', function() {
       airport.landPlane(plane);
@@ -36,6 +45,12 @@ describe("Airport", function() {
       };
       expect(function () { airport.landPlane(plane) }).toThrow('Airport is full!');
     });
+
+    it('cannot land a plane if weather is stormy', function (){
+      spyOn(weather2, 'generate').and.returnValue('stormy');
+      airport.checkWeather(weather2);
+      expect(function () {airport.landPlane(plane, weather2) }).toThrow('Plane cannot land, bad weather');
+    })
   });
 
   describe("takeOff", function() {
@@ -59,8 +74,14 @@ describe("Airport", function() {
   });
 
   describe("checkWeather", function() {
+    beforeEach(function() {
+    weather = {
+      generate: function() {}
+    }
+  });
     it('should check the weather', function() {
-      airport.checkWeather();
+      spyOn(weather,'generate').and.returnValue('stormy');
+      airport.checkWeather(weather);
       expect(weather.generate).toHaveBeenCalled();
     });
   });

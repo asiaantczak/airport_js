@@ -4,5 +4,5 @@ function Weather() {
 };
 
 Weather.prototype.generate = function(){
-  this.status = outlook[Math.floor(Math.random()*outlook.length)];
+  return outlook[Math.floor(Math.random()*outlook.length)];
 };

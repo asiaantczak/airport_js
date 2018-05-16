@@ -3,11 +3,14 @@ const defaultCapacity = 10;
 function Airport(capacity = defaultCapacity) {
   this.planes = []
   this.capacity = capacity
-  this.weather = null
+  this.weatherConditions = null
 };
 
-Airport.prototype.landPlane = function(plane) {
-  if (this.planes.length === this.capacity) {
+Airport.prototype.landPlane = function(plane, weather) {
+  this.checkWeather(weather);
+  if (this.weatherConditions === "stormy") {
+    throw "Plane cannot land, bad weather";
+  } else if (this.planes.length === this.capacity) {
     throw "Airport is full!";
   } else {
     this.planes.push(plane);
@@ -25,6 +28,6 @@ Airport.prototype.takeOff = function(plane) {
   }
 };
 
-Airport.prototype.checkWeather = function() {
-  this.weather = weather.generate();
+Airport.prototype.checkWeather = function(weather) {
+  this.weatherConditions = weather.generate();
 };
